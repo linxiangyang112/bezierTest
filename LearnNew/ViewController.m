@@ -9,13 +9,22 @@
 #import "ViewController.h"
 #import "UIButton+testBtn.h"
 #import "NSArray+CrashCL.h"
+#import "IGTestViewController.h"
+#import "MyViewController.h"
+#import "LGDMapViewController.h"
 
-@interface ViewController ()
+
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource>{
+    NSInteger index_;
+    NSTimer * timer_;
+}
 
 @property (nonatomic, strong)UIButton *  btn;
 @property (nonatomic, strong)CAShapeLayer * shapeLayer;
 @property (nonatomic, strong)CAShapeLayer * secShapeLayer;
-
+@property (nonatomic, strong)UILabel * gradientLabel;
+@property (nonatomic, strong)UITableView * tableView;
+@property (nonatomic, strong)CAGradientLayer * gradientLayer;
 @end
 
 @implementation ViewController
@@ -37,7 +46,156 @@
     [self creatRightCircle];
     [self creatSJ];
     [self creatMouth];
+    [self creatPushBtn];
+    index_ = 0;
+    if (!_tableView) {
+        
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 550, [UIScreen mainScreen].bounds.size.width, 40) style:UITableViewStylePlain];
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+        _tableView.pagingEnabled = YES;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.bounces = NO;
+        _tableView.showsHorizontalScrollIndicator = NO;
+        _tableView.showsVerticalScrollIndicator = NO;
+    }
+    [self.view addSubview:_tableView];
+    [self creatTimer];
+    [self jbsLabel];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear: animated];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
+- (void)dealloc{
+    [timer_ invalidate];
+    timer_ = nil;
+     [_btn removeObserver:self forKeyPath:@"highlighted"];
+}
+
+//渐变色label
+- (void)jbsLabel{
+    if (!_gradientLabel) {
+        _gradientLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 600, [UIScreen mainScreen].bounds.size.width, 40)];
+        _gradientLabel.backgroundColor = [UIColor clearColor];
+        _gradientLabel.text = @"这是一个渐变色标签";
+        _gradientLabel.font = [UIFont systemFontOfSize:25];
+    }
+    
+   UIView *bgView = [[UIView alloc]initWithFrame:_gradientLabel.frame];
+    bgView.backgroundColor = [UIColor whiteColor];
+    [bgView addSubview:_gradientLabel];
+    _gradientLayer = [CAGradientLayer layer];
+    _gradientLayer.frame = _gradientLabel.bounds;
+    _gradientLayer.colors = @[(id)[self randomColor].CGColor,(id)[self randomColor].CGColor,(id)[self randomColor].CGColor];
+    _gradientLayer.startPoint = CGPointMake(0, 1);
+    _gradientLayer.endPoint = CGPointMake(1, 0);
+     [bgView.layer addSublayer:_gradientLayer];
+    _gradientLayer.mask = _gradientLabel.layer;
+    _gradientLabel.frame = _gradientLayer.bounds;
+    CADisplayLink *link = [CADisplayLink displayLinkWithTarget:self selector:@selector(textColorChange)];
+    [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [self.view addSubview:bgView];
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+}
+
+-(UIColor *)randomColor{
+    CGFloat r = arc4random_uniform(256) / 255.0;
+    CGFloat g = arc4random_uniform(256) / 255.0;
+    CGFloat b = arc4random_uniform(256) / 255.0;
+    return [UIColor colorWithRed:r green:g blue:b alpha:1];
+}
+
+-(void)textColorChange {
+    _gradientLayer.colors = @[(id)[self randomColor].CGColor,(id)[self randomColor].CGColor,(id)[self randomColor].CGColor];
+}
+
+- (void)creatTimer{
+    timer_ = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(circleScroll) userInfo:nil repeats:YES];
+    [timer_ fireDate];
+}
+
+- (void)circleScroll{
+    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:index_ inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    index_ ++;
+    if (index_ >= 10) {
+        index_ = 0;
+    }
+}
+
+#pragma mark - circleTableView
+
+//尝试实现滚动播放效果
+- (void)creatTableView{
+    
+}
+
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    NSLog(@"滚动位置%f",scrollView.contentOffset.y);
+//}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [timer_ setFireDate:[NSDate distantFuture]];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    index_ = _tableView.contentOffset.y/40;
+    [timer_ setFireDate:[NSDate date]];
+}
+ - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString * cellId = @"cellId";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"这是%ld",(long)indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    LGDMapViewController * vc = [[LGDMapViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)creatPushBtn{
+    UIButton * btn = [[UIButton alloc]initWithFrame:CGRectMake(100, 450, 50, 50)];
+    [btn setTitle:@"跳转" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(pushNext) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+}
+
+- (void)pushNext{
+    MyViewController * vc = [[MyViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //创建3次折线图
@@ -262,8 +420,5 @@
     self.view.backgroundColor = [UIColor greenColor];
 }
 
-- (void)dealloc{
-    [_btn removeObserver:self forKeyPath:@"highlighted"];
-}
 
 @end

@@ -12,7 +12,6 @@
 @implementation NSArray (CrashCL)
 
 + (void)load{
-    
     //aaaaaaaaaaaaa
     //此方法交换在数组内容是空或者1的时候失效
     static dispatch_once_t onceToken;

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C35B091621D7105C0008A31C /* BaseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35B091521D7105C0008A31C /* BaseListViewController.m */; };
+		C35CDEAC21D084A9006E0893 /* IGTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35CDEAB21D084A9006E0893 /* IGTestViewController.m */; };
+		C377D5FD21EEC99900971E57 /* LGDMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C377D5FC21EEC99900971E57 /* LGDMapViewController.m */; };
+		C3791ED721D0D0DF00C15880 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3791ED621D0D0DF00C15880 /* MyViewController.m */; };
 		C3F101C9217D6190002F6060 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F101C8217D6190002F6060 /* AppDelegate.m */; };
 		C3F101CC217D6190002F6060 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F101CB217D6190002F6060 /* ViewController.m */; };
 		C3F101CF217D6190002F6060 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3F101CD217D6190002F6060 /* Main.storyboard */; };
@@ -16,6 +20,7 @@
 		C3F101E1217D6197002F6060 /* LearnNewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F101E0217D6197002F6060 /* LearnNewTests.m */; };
 		C3F101ED217D63C0002F6060 /* UIButton+testBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F101EC217D63C0002F6060 /* UIButton+testBtn.m */; };
 		C3F101F0217DA3CD002F6060 /* NSArray+CrashCL.m in Sources */ = {isa = PBXBuildFile; fileRef = C3F101EF217DA3CD002F6060 /* NSArray+CrashCL.m */; };
+		D16CF2A36309FEDB49C19A67 /* libPods-LearnNew.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7074E8490179DF9708283A7E /* libPods-LearnNew.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +34,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1EBA1411A29C8A69A35E3532 /* Pods-LearnNew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnNew.release.xcconfig"; path = "Pods/Target Support Files/Pods-LearnNew/Pods-LearnNew.release.xcconfig"; sourceTree = "<group>"; };
+		7074E8490179DF9708283A7E /* libPods-LearnNew.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LearnNew.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBEBD45EC59933A7A8BA74A /* Pods-LearnNew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnNew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LearnNew/Pods-LearnNew.debug.xcconfig"; sourceTree = "<group>"; };
+		C35B091421D7105C0008A31C /* BaseListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseListViewController.h; sourceTree = "<group>"; };
+		C35B091521D7105C0008A31C /* BaseListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseListViewController.m; sourceTree = "<group>"; };
+		C35CDEAA21D084A9006E0893 /* IGTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGTestViewController.h; sourceTree = "<group>"; };
+		C35CDEAB21D084A9006E0893 /* IGTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGTestViewController.m; sourceTree = "<group>"; };
+		C377D5FB21EEC99900971E57 /* LGDMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDMapViewController.h; sourceTree = "<group>"; };
+		C377D5FC21EEC99900971E57 /* LGDMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDMapViewController.m; sourceTree = "<group>"; };
+		C377D5FE21EECCCD00971E57 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		C3791ED521D0D0DF00C15880 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		C3791ED621D0D0DF00C15880 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		C3F101C4217D6190002F6060 /* LearnNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3F101C7217D6190002F6060 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C3F101C8217D6190002F6060 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -53,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D16CF2A36309FEDB49C19A67 /* libPods-LearnNew.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +84,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09A25FB8EDCE095364B2BCAF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AFBEBD45EC59933A7A8BA74A /* Pods-LearnNew.debug.xcconfig */,
+				1EBA1411A29C8A69A35E3532 /* Pods-LearnNew.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C35B091321D710270008A31C /* IGListKitLearn */ = {
+			isa = PBXGroup;
+			children = (
+				C35B091421D7105C0008A31C /* BaseListViewController.h */,
+				C35B091521D7105C0008A31C /* BaseListViewController.m */,
+			);
+			path = IGListKitLearn;
+			sourceTree = "<group>";
+		};
 		C3F101BB217D6190002F6060 = {
 			isa = PBXGroup;
 			children = (
 				C3F101C6217D6190002F6060 /* LearnNew */,
 				C3F101DF217D6197002F6060 /* LearnNewTests */,
 				C3F101C5217D6190002F6060 /* Products */,
+				09A25FB8EDCE095364B2BCAF /* Pods */,
+				F6A83F0C4588C9E4829E5F76 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +125,7 @@
 		C3F101C6217D6190002F6060 /* LearnNew */ = {
 			isa = PBXGroup;
 			children = (
+				C35B091321D710270008A31C /* IGListKitLearn */,
 				C3F101EB217D63C0002F6060 /* UIButton+testBtn.h */,
 				C3F101EC217D63C0002F6060 /* UIButton+testBtn.m */,
 				C3F101EE217DA3CD002F6060 /* NSArray+CrashCL.h */,
@@ -100,6 +139,12 @@
 				C3F101D2217D6197002F6060 /* LaunchScreen.storyboard */,
 				C3F101D5217D6197002F6060 /* Info.plist */,
 				C3F101D6217D6197002F6060 /* main.m */,
+				C35CDEAA21D084A9006E0893 /* IGTestViewController.h */,
+				C35CDEAB21D084A9006E0893 /* IGTestViewController.m */,
+				C3791ED521D0D0DF00C15880 /* MyViewController.h */,
+				C3791ED621D0D0DF00C15880 /* MyViewController.m */,
+				C377D5FB21EEC99900971E57 /* LGDMapViewController.h */,
+				C377D5FC21EEC99900971E57 /* LGDMapViewController.m */,
 			);
 			path = LearnNew;
 			sourceTree = "<group>";
@@ -113,6 +158,15 @@
 			path = LearnNewTests;
 			sourceTree = "<group>";
 		};
+		F6A83F0C4588C9E4829E5F76 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C377D5FE21EECCCD00971E57 /* libstdc++.6.0.9.tbd */,
+				7074E8490179DF9708283A7E /* libPods-LearnNew.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -120,9 +174,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3F101E5217D6197002F6060 /* Build configuration list for PBXNativeTarget "LearnNew" */;
 			buildPhases = (
+				CA705E9A52AD83E435EC2B7C /* [CP] Check Pods Manifest.lock */,
 				C3F101C0217D6190002F6060 /* Sources */,
 				C3F101C1217D6190002F6060 /* Frameworks */,
 				C3F101C2217D6190002F6060 /* Resources */,
+				0CAECD5898135E508FDCC382 /* [CP] Embed Pods Frameworks */,
+				FCE57105D7C7FDA2A62A1EA1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,16 +265,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0CAECD5898135E508FDCC382 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LearnNew/Pods-LearnNew-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA705E9A52AD83E435EC2B7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LearnNew-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FCE57105D7C7FDA2A62A1EA1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LearnNew/Pods-LearnNew-resources.sh",
+				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LearnNew/Pods-LearnNew-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C3F101C0217D6190002F6060 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C35CDEAC21D084A9006E0893 /* IGTestViewController.m in Sources */,
+				C35B091621D7105C0008A31C /* BaseListViewController.m in Sources */,
 				C3F101CC217D6190002F6060 /* ViewController.m in Sources */,
 				C3F101D7217D6197002F6060 /* main.m in Sources */,
 				C3F101F0217DA3CD002F6060 /* NSArray+CrashCL.m in Sources */,
 				C3F101ED217D63C0002F6060 /* UIButton+testBtn.m in Sources */,
 				C3F101C9217D6190002F6060 /* AppDelegate.m in Sources */,
+				C377D5FD21EEC99900971E57 /* LGDMapViewController.m in Sources */,
+				C3791ED721D0D0DF00C15880 /* MyViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +488,7 @@
 		};
 		C3F101E6217D6197002F6060 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFBEBD45EC59933A7A8BA74A /* Pods-LearnNew.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -381,7 +497,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ijx.LearnNew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ischool.teacher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -389,6 +505,7 @@
 		};
 		C3F101E7217D6197002F6060 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EBA1411A29C8A69A35E3532 /* Pods-LearnNew.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -397,7 +514,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ijx.LearnNew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ischool.teacher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import <AMapFoundationKit/AMapFoundationKit.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    ViewController *mainView = [[ViewController alloc]init];
+    UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:mainView];
+    navi.navigationBar.backgroundColor = [UIColor blueColor];
+    [self.window setRootViewController:navi];
+    [self.window makeKeyAndVisible];
+    
+    //高德地图
+    //开启HTTPS 必须在 设置key之前
+    [[AMapServices sharedServices] setEnableHTTPS:YES];
+    [AMapServices sharedServices].apiKey = @"a2b7dbe23394c7e6b8e98f3385b7e786";
+    
     return YES;
 }
 
