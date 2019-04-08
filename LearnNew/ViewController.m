@@ -12,6 +12,7 @@
 #import "IGTestViewController.h"
 #import "MyViewController.h"
 #import "LGDMapViewController.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>{
@@ -63,6 +64,7 @@
     [self.view addSubview:_tableView];
     [self creatTimer];
     [self jbsLabel];
+    [self creatImg];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -82,6 +84,67 @@
      [_btn removeObserver:self forKeyPath:@"highlighted"];
 }
 
+- (void)creatImg{
+    
+    UIImageView * imageView = [[UIImageView alloc]init];
+    NSString * x = [[NSUserDefaults standardUserDefaults]objectForKey:@"xPoint"];
+    NSString * y = [[NSUserDefaults standardUserDefaults]objectForKey:@"yPoint"];
+    if (x.length > 0) {
+        imageView.center = CGPointMake([x floatValue], [y floatValue]);
+        imageView.bounds = CGRectMake(0, 0, 100, 100);
+    }
+    else{
+        imageView.frame = CGRectMake(0, 0, 100, 100);
+    }
+    imageView.image = [UIImage imageNamed:@"1-1"];
+    imageView.userInteractionEnabled = YES;
+    UILongPressGestureRecognizer * longGes = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPress:)];
+    [self.view addSubview:imageView];
+    [imageView addGestureRecognizer:longGes];
+    UIPanGestureRecognizer * panges = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panpress:)];
+    [imageView addGestureRecognizer:panges];
+}
+
+- (void)panpress:(UIPanGestureRecognizer *)rec{
+    //返回在横坐标上、纵坐标上拖动了多少像素
+    CGPoint point=[rec translationInView:self.view];
+    NSLog(@"%f,%f",point.x,point.y);
+    rec.view.center=CGPointMake(rec.view.center.x+point.x, rec.view.center.y+point.y);
+    //拖动完之后，每次都要用setTranslation:方法制0这样才不至于不受控制般滑动出视图
+    [rec setTranslation:CGPointMake(0, 0) inView:self.view];
+    NSLog(@"x坐标%@",[NSString stringWithFormat:@"%f",rec.view.center.x]);
+    //记录图片中心点 x y坐标
+    [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%f",rec.view.center.x] forKey:@"xPoint"];
+    [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%f",rec.view.center.y] forKey:@"yPoint"];
+}
+
+//长按手势操作
+- (void)longPress:(UILongPressGestureRecognizer *)ges{
+    NSLog(@"长按");
+    UIImageView * imgView = (UIImageView *)[ges view];
+    UIAlertController * alertC= [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction * sureAction = [UIAlertAction actionWithTitle:@"保存图片" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        UIImageWriteToSavedPhotosAlbum(imgView.image, self, @selector(imageSavedToPhotosAlbum:didFinishSavingWithError:contextInfo:), nil);
+    }];
+    UIAlertAction * cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alertC addAction:cancleAction];
+    [alertC addAction:sureAction];
+    [self presentViewController:alertC animated:YES completion:nil];
+}
+
+- (void)imageSavedToPhotosAlbum:(UIImage*)image didFinishSavingWithError:  (NSError*)error contextInfo:(void*)contextInfo{
+    NSString*message;
+    
+    if(!error) {
+        message =@"成功保存到相册";
+        [SVProgressHUD showSuccessWithStatus:message];
+    }else
+    {
+        message = [error description];
+        [SVProgressHUD showErrorWithStatus:message];
+    }
+}
+
 //渐变色label
 - (void)jbsLabel{
     if (!_gradientLabel) {
@@ -90,7 +153,6 @@
         _gradientLabel.text = @"这是一个渐变色标签";
         _gradientLabel.font = [UIFont systemFontOfSize:25];
     }
-    
    UIView *bgView = [[UIView alloc]initWithFrame:_gradientLabel.frame];
     bgView.backgroundColor = [UIColor whiteColor];
     [bgView addSubview:_gradientLabel];
@@ -108,7 +170,9 @@
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
-    
+    if ([key isEqualToString:@"name"]) {
+        
+    }
 }
 
 -(UIColor *)randomColor{
